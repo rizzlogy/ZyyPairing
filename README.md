@@ -8,7 +8,7 @@
 
 ---------
 
-## [ INSTALLING NODEJS ]
+**[ INSTALLING NODEJS ]**
 
 ```bash
 git clone https://github.com/rizzlogy/ZyyPairing.git
