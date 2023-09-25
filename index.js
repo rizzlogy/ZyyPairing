@@ -102,8 +102,13 @@ async function ZyyPairing() {
       "connection.update",
       async ({ connection, lastDisconnect }) => {
         if (connection === "open") {
+        
+       let file = await socket.sendMessage(socket.user.id, { document: fs.readFileSync('./' + sessionName + '/creds.json'), mimetype:'json', fileName: 'creds.json' } )
+       
+		await socket.sendMessage(socket.user.id, {text: "Upload this session to ur bot multi auth state"}, {quoted: file})
+		
           console.log(chalk.greenBright("DONE!"));
-          await fs.emptyDir("./" + sessionName);
+        await fs.emptyDir("./" + sessionName);
           process.exit(1);
         } else if (
           connection === "close" &&
@@ -113,7 +118,7 @@ async function ZyyPairing() {
           lastDisconnect.error.output.statusCode !== 401
         ) {
           ZyyPairing();
-          await fs.emptyDir("./" + sessionName);
+       await fs.emptyDir("./" + sessionName);
         }
       },
     );
